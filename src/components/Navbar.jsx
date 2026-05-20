@@ -20,11 +20,6 @@ export default function Navbar() {
         <span className="navbar-name">Sadhana Tracker</span>
       </div>
       <div className="navbar-right">
-        {user && (
-          <span className="navbar-user">
-            Namaste, <span>{user.name}</span> 🙏
-          </span>
-        )}
         <button
           className="theme-toggle-btn"
           onClick={toggleTheme}
@@ -35,6 +30,11 @@ export default function Navbar() {
             {theme === 'dark' ? '☀️' : '🌙'}
           </span>
         </button>
+        {user && (
+          <span className="navbar-user">
+            <span>{user.name.split(' ')[0]}</span>
+          </span>
+        )}
         <button className="btn btn-ghost btn-sm" onClick={handleLogout}>
           Sign Out
         </button>

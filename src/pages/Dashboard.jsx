@@ -91,7 +91,7 @@ function SimpleAvgCard({ icon, title, avg, unit, label, color, gradient }) {
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { token } = useAuth();
+  const { token, user } = useAuth();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -113,12 +113,14 @@ export default function Dashboard() {
   }, [token]);
 
   const hasData = stats && stats.total > 0;
+  const firstName = user?.name?.split(' ')[0] || '';
 
   return (
     <>
       <Navbar />
       <div className="dashboard-page">
         <div className="dashboard-header">
+          <p style={{ fontSize: '18px', fontWeight: 500, color: 'var(--accent-light)', marginBottom: '4px' }}>Jai Gurudev, {firstName} 🙏</p>
           <h1>Your Sadhana Dashboard 🌟</h1>
           <p>Track your spiritual progress and build consistent daily practices.</p>
           <button className="fill-btn" onClick={() => navigate('/fill-tracker')}>
